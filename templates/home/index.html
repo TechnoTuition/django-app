@@ -1,0 +1,16 @@
+{% extends "home/base.html" %}
+{% load static %}
+
+{% block body %}
+
+
+<div class="container my-4">
+<img src="{% static 'home/image/home.jpg' %}" class="img-fluid" alt="home">
+<div class="d-grid gap-2 my-4">
+<a class="btn btn-primary" href="/Login" role="button">Login</a>
+<a class="btn btn-primary" href="/signup" role="button">Signup</a>
+</div>
+</div>
+
+
+{% endblock %}

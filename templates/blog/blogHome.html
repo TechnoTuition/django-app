@@ -1,0 +1,28 @@
+{% extends "home/base.html" %}
+{% load static %}
+{% block title %}Blog{% endblock %}
+{% block head %}
+<head>
+ <link rel="stylesheet" href="{% static 'css/blog.css' %}" type="text/css" media="all" />
+</head>
+{% endblock %}
+
+ <link rel="stylesheet" href="/static/css/blog.css" />
+
+{% block body %}
+{% for post in allPost %}
+<div class="container my-4 ">
+<div class="jumbotron form-control">
+<p>Posted by: {{post.author}}</p>
+  <strong>
+<h1 class="display-6">{{post.title}}</h1>
+</strong>
+  <p class="lead">{{post.content |truncatechars:100}}</p>
+
+  <p class="lead">
+    <a class="btn btn-primary btn-lg" href="{{post.slug}}") role="button">Read More</a>
+  </p>
+</div>
+</div>
+{% endfor %}
+{% endblock %}

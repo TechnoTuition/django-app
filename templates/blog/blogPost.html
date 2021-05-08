@@ -1,0 +1,20 @@
+{% extends "home/base.html" %}
+{% load static %}
+{% block title %}Blog{% endblock %}
+{% block head %}
+<head>
+ <link rel="stylesheet" href="{% static 'css/blog.css' %}" type="text/css" media="all" />
+</head>
+{% endblock %}
+
+ <link rel="stylesheet" href="/static/css/blog.css" />
+
+{% block body %}
+<div class="container my-4">
+<div class="jumbotron">
+<p>Posted by: {{post.author}}</p>
+  <h1 class="display-4">{{post.title}}</h1>
+  <p class="lead">{{post.content}}</p>
+</div>
+</div>
+{% endblock %}
