@@ -1,8 +1,10 @@
 from django.shortcuts import render ,HttpResponse ,redirect 
 from home.models import Contact
+from django.http import JsonResponse
 from django.contrib import messages 
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate , login , logout
+import smtplib
 
 # Create your views here.
 
@@ -22,9 +24,17 @@ def contact(request):
            
            messages.error(request, 'form fill correctly ')
        else:
-            contact = Contact(name=name,email=email,massege=massage)
-            contact.save()
-            messages.success(request,"Form has been submit")
+           
+           s = smtplib.SMTP('smtp.gmail.com', 587)
+           s.starttls()
+           s.login("surajp9999999@gmail.com", "88406439wp")
+           msg = massage
+           s.sendmail(email, "surajp9999999@gmail.com", msg)
+           s.quit()
+
+           # contact = Contact(name=name,email=email,massege=massage)
+           # contact.save()
+           messages.success(request,"Form has been submit")
     return render(request,"home/contact.html")
 
 # about page function start here
@@ -79,3 +89,10 @@ def Logout(request):
     
     logout(request)
     return redirect("/Login")
+def api(request):
+    data = {
+        'name':'suraj',
+        'age':21,
+        'adrass':'hom',
+    }
+    return JsonResponse(data)

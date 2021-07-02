@@ -8,8 +8,11 @@ def blogHome(request):
     
 #================================#================================
 
-def blogPost(request,slug):
-    post = Post.objects.filter(slug=slug).first()
+def writePost(request):
+    return render(request,"blog/writePost.html")
+def blogPost(request,slugg):
+    post = Post.objects.filter(slug=slugg).first()
+    
     contaxt = {"post":post}
     return render(request,"blog/blogPost.html",contaxt)
     
